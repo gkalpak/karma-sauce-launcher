@@ -57,7 +57,7 @@ export function processConfig(config: any = {}, args: any = {}) {
   };
 
   // transform JWP capabilities into W3C capabilities for backward compatibility
-  if (isW3C(args)) {
+  if (!isW3C(args)) {
     args.browserVersion = args.browserVersion || args.version || 'latest'
     args.platformName = args.platformName || args.platform || 'Windows 10'
     args['sauce:options'] = {...capabilitiesFromConfig, ...(args['sauce:options'] || {})}
